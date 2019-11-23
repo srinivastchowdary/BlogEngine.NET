@@ -15,6 +15,6 @@ node{
      }
     stage('Unit Test'){
         
-      bat "\"${tool 'MSTest'}\" BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.dll"
+      bat "\"${tool 'MSTest'}\" BlogEngine/BlogEngine.Tests/obj/Release/BlogEngine.Tests.dll"
     }
 }

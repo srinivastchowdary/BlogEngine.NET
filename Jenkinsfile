@@ -15,6 +15,6 @@ node{
      }
     stage('Test'){
         
-      bat "\"${tool 'MSBuild'}\" BlogEngine\BlogEngine.Tests\bin\Debug\BlogEngine.Tests.dll"
+      bat "\"${tool 'MStest'}\" BlogEngine\BlogEngine.Tests\bin\Debug\BlogEngine.Tests.dll"
     }
 }

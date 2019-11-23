@@ -15,6 +15,6 @@ node{
      }
     stage('Test'){
         
-      bat "\"${tool 'MStest'}\" BlogEngine\BlogEngine.Tests\bin\Debug\BlogEngine.Tests.dll"
+      bat "\"${tool 'MStest'}\" C:\Program Files (x86)\Jenkins\workspace\.Net-Project\BlogEngine\BlogEngine.Tests\bin\Debug\BlogEngine.Tests.dll"
     }
 }

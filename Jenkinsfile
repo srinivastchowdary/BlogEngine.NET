@@ -10,8 +10,7 @@ node{
     }    
    stage('Build'){
        
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build;package 
-       /p:PackageFileName="C:\Program Files (x86)\Jenkins\workspace\.Net-Project_Pipeline\BlogEngine\BlogEngine.NET\obj\Debug\Package\BlogEngine.NET.zip""
+       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build;package /p:PackageFileName="C:\Program Files (x86)\Jenkins\workspace\.Net-Project_Pipeline\BlogEngine\BlogEngine.NET\obj\Debug\Package\BlogEngine.NET.zip""
         
      }
     stage('Unit Test'){

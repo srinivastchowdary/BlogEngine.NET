@@ -27,4 +27,9 @@ node{
     
         "C:/Program Files/IIS/Microsoft Web Deploy V3/msdeploy.exe -verb=sync -source:package=C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip -dest:auto -setParam:IIS Web Application Name=BlogEngine -allowUntrusted=true"
     }
+    
+    stage('Email Notification'){
+               mail bcc: '', body: 'Welcome to jenkins notification alert', 
+               cc: 'mohamed.sadiqh@gmail.com', from: '', replyTo: '', subject: 'Jenkins job', to: 'vasucena145@gmail.com'
+            }
 }

@@ -15,6 +15,7 @@ node{
      }
     stage('Unit Test'){
         
-      bat "\"${tool 'MSTest'}\" C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.Tests/obj/Release/BlogEngine.Tests.dll"
+     bat 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\MSTest.exe ${workspace}\bin\Debug\BlogEngine.Tests.dll'
+
     }
 }

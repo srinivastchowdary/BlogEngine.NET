@@ -13,6 +13,16 @@ node{
        bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
      }
+    
+   stage('Build + SonarQube analysis') {
+       
+       def sqScannerMsBuildHome = tool 'Scanner for MSBuild 4.6'
+       withSonarQubeEnv('SonarScanner for MSBuild') {
+       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:myKey"
+       bat 'MSBuild.exe /t:Rebuild'
+       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"
+    }
+  }
     stage('Unit Test'){
      
       bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll"

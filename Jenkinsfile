@@ -14,6 +14,6 @@ node{
         
      }
     stage('UnitTest'){
-      bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll" /resultsfile:testResults.trx
+      bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:testResults.trx"
     }
 }

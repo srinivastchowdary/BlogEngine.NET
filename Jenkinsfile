@@ -10,7 +10,7 @@ node{
     }    
    stage('Build'){
        
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build"
+       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
      }
     stage('Unit Test'){

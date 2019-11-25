@@ -14,7 +14,7 @@ node{
         
      }
     stage('Unit Test'){
-      bat del:/resultsfile:testResults.trx
+     
       bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:TestResults\testResults.trx"
     }
     

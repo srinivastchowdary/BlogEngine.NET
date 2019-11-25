@@ -17,8 +17,8 @@ node{
       bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:testResults.trx"
     }
     
-    stage('Deploy to IIS'){
-      
-        bat "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb=sync -source:package="C:\Program Files (x86)\Jenkins\workspace\.Net-Project\BlogEngine\BlogEngine.NET\obj\Release\_PublishedWebsites\BlogEngine.NET_Package\BlogEngine.NET.zip" -dest:auto -setParam:"IIS Web Application Name"="BlogEngine" -allowUntrusted=true
+    stage('Create Artifacts'){
+        
+      archiveArtifacts '**/*.zip'
     }
 }

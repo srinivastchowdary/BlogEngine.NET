@@ -6,11 +6,11 @@ node{
     }
     stage('Restore Nuget'){
     
-        bat 'C:/Users/user/Downloads/nuget.exe restore BlogEngine/BlogEngine.sln /t:clean;build;package'
+        bat 'C:/Users/user/Downloads/nuget.exe restore BlogEngine/BlogEngine.sln'
     }    
    stage('Build'){
        
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln"
+       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build;package"
         
      }
     stage('Unit Test'){

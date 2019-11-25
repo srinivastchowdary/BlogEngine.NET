@@ -14,7 +14,6 @@ node{
         
      }
     stage('UnitTest'){
-      bat "C:/Program Files(x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/MSTest.exe" /resultsfile:"%WORKSPACE%\Results.trx" /testcontainer:bin/Debug/BlogEngine.Tests.dll
-     
+      bat "\"${tool 'MSTest'}\" C:/Program Files (x86)/Jenkins/workspace/.Net-Project/BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll"
     }
 }

@@ -15,7 +15,8 @@ node{
      }
     stage('Unit Test'){
         
-     bat 'C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/MSTest.exe ${workspace}/bin/Debug/BlogEngine.Tests.dll'
+     bat 'C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/MSTest.exe' ${workspace}/bin/Debug/BlogEngine.Tests.dll /resultsfile:TestResults.trx
+
 
     }
 }

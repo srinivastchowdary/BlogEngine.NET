@@ -10,7 +10,7 @@ node{
     }    
    stage('Build'){
        
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build;package;test"
+       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:clean;build"
         
      }
     stage('Unit Test'){

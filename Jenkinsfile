@@ -18,8 +18,8 @@ node{
        
        def sqScannerMsBuildHome = tool 'Scanner for MSBuild'
        withSonarQubeEnv('SonarQube Server') {
-       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:DOTNET-PROJECT /n:DOTNET-PROJECT /v:build"
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:Rebuild /p:Configuration=Release"
+       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:DOTNET-PROJECT"
+       bat 'MSBuild.exe /t:Rebuild'
        bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"
     }
   }

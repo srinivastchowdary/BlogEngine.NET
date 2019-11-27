@@ -16,8 +16,8 @@ node{
     
    stage('Build + SonarQube analysis') {
        
-       def sqScannerMsBuildHome = tool 'SonarQube Server'
-       withSonarQubeEnv('SonarQube Server') {
+       def sqScannerMsBuildHome = tool 'SonarQube Scanner'
+       withSonarQubeEnv('SonarQube Scanner') {
        bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:myKey"
        bat 'MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild'
        bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"

@@ -15,9 +15,9 @@ node{
   //   }
     
    stage('Build + SonarQube analysis') {
-            bat "\"${tool 'Scanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /d:sonar.host.url=http://localhost:9000 /k:DOTNET-PROJECT /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
+            bat "\"${tool 'Scanner for MSBuild'}\" SonarScanner.MSBuild.exe begin /d:sonar.host.url=http://localhost:9000 /k:DOTNET-PROJECT /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
 	    bat "\"${tool 'MSBuild'}\" MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild"
-	    bat "\"${tool 'Scanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe end"
+	    bat "\"${tool 'Scanner for MSBuild'}\" SonarScanner.MSBuild.exe end"
 	   
 	   def response = httpRequest "http://localhost:9000/api/qualitygates/project_status?projectKey=DOTNET-PROJECT"
   }

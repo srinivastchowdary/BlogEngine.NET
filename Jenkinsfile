@@ -18,6 +18,8 @@ node{
             bat "\"${tool 'Scanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /d:sonar.host.url=http://localhost:9000 /k:DOTNET-PROJECT /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
 	    bat "\"${tool 'MSBuild'}\" MSBuild.exe /t:Rebuild"
 	    bat "\"${tool 'Scanner for MSBuild'}\" MSBuild.SonarQube.Runner.exe end"
+	   
+	   def response = httpRequest "http://localhost:9000/api/qualitygates/project_status?projectKey=DOTNET-PROJECT"
   }
     stage('Unit Test'){
      

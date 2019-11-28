@@ -16,7 +16,7 @@ node{
     
    stage('Build + SonarQube analysis') {
     def sqScannerMsBuildHome = tool 'Scanner for MSBuild'
-    withSonarQubeEnv('My SonarQube Server') {
+    withSonarQubeEnv('SonarQube Server') {
       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /d:sonar.projectName=DOTNET-PROJECT /k:DOTNET-PROJECT /d:sonar.host.url=http://localhost:9000 /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f /n:DOTNET-PROJECT /d:sonar.projectVersion=$BUILD_NUMBER"
       bat 'MSBuild.exe /t:Rebuild'
       bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"

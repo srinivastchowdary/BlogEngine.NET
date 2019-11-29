@@ -15,7 +15,7 @@ node{
   //   }
     
   stage('Build + SonarQube analysis') {
-            bat "C:/Program Files (x86)/Jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.exe /k:"DOTNET-PROJECT" /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f /n:"DOTNET-PROJECT" /v:"$BUILD_NUMBER""
+            bat "C:/Program Files (x86)/Jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.exe /k:DOTNET-PROJECT /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
 	    bat "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe /property:Configuration=AutoBuild /t:Rebuild"
 	    bat "C:/Program Files (x86)/Jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/SonarScanner_for_MSBuild/SonarScanner.MSBuild.exe end /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f"
 	   

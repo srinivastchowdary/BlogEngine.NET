@@ -8,19 +8,13 @@ node{
     
         bat 'C:/Users/user/Downloads/nuget.exe restore BlogEngine/BlogEngine.sln'
     }    
-//   stage('Build'){
+  stage('Build'){
        
-//       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
+       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
-  //   }
+     }
     
- stage('Build + SonarQube analysis') {
-        bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /k:DOTNET-PROJECT /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
-	    bat  "MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild"
-	    bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe end"
-	   
-	   def response = httpRequest "http://localhost:9000/api/qualitygates/project_status?projectKey=DOTNET-PROJECT"
-  }
+ 
     stage('Unit Test'){
      
       bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll"
@@ -30,6 +24,20 @@ node{
         
       archiveArtifacts '**/*.zip'
     }
+  stage('Upload Artifacts'){
+       def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
+       server.setBypassProxy(true)
+  
+   def uploadSpec = """{
+     "files": [
+    {
+      "pattern": ""C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip"",
+      "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
+    }
+ ]
+}"""
+server.upload(uploadSpec)
+}
     
     stage('Deploy to IIS'){
     

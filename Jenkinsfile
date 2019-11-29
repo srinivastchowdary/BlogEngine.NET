@@ -15,7 +15,7 @@ node{
   //   }
     
    stage('Build + SonarQube analysis') {
-        bat "\"${tool 'Scanner for MSBuild'}\" SonarScanner.MSBuild.exe begin /k:sonar.projectKey=DOTNET-PROJECT /d:sonar.host.url=http://localhost:9000 /d:sonar.login=98ee32363c4bb8687315351a054737ea2c480a1f /n:sonar.projectName=DOTNET-PROJECT /v:sonar.projectVersion=$BUILD_NUMBER"
+        bat "\"${tool 'Scanner for MSBuild'}\" SonarScanner.MSBuild.exe begin -k:"DOTNET-PROJECT" -d:sonar.host.url=http://localhost:9000 -d:sonar.login="98ee32363c4bb8687315351a054737ea2c480a1f" -n:"DOTNET-PROJECT" -v:"$BUILD_NUMBER""
 	    bat "\"${tool 'MSBuild'}\" MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild"
 	    bat "\"${tool 'Scanner for MSBuild'}\" SonarScanner.MSBuild.exe end"
 	   

@@ -34,7 +34,7 @@ node{
        }
       ]
     }"""
-    server.upload spec: uploadSpec, failNoOp: true
+    server.upload spec: uploadSpec
   }
     
     stage('Deploy to IIS'){

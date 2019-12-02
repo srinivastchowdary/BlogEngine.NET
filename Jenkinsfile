@@ -14,7 +14,7 @@ node{
         
      //}
     stage('Build + SonarQube analysis') {
-         bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /k:DOTNET-PROJECT  /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
+            bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /k:"DOTNET-PROJECT"  /n:"DOTNET-PROJECT" /v:"$BUILD_NUMBER""
 	    bat  "MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild"
 	    bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe end"
 	   

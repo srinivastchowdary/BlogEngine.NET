@@ -8,19 +8,18 @@ node{
     
         bat 'C:/Users/user/Downloads/nuget.exe restore BlogEngine/BlogEngine.sln'
     }    
-  stage('Build'){
+ // stage('Build'){
        
-       bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
+   //    bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
-     }
-    stage('Build + SonarQube analysis'){
-    def sqScannerMsBuildHome = tool 'SonarQubeScanner for MSBuild'
-    withSonarQubeEnv {
-    bat "${sqScannerMsBuildHome}\\MSBuild.SonarQube.Runner.exe begin /k:DOTNET-PROJECT /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
-    bat 'MSBuild.exe /t:Rebuild'
-    bat "${sqScannerMsBuildHome}\\MSBuild.SonarQube.Runner.exe end"
+     //}
+    stage('Build + SonarQube analysis') {
+         bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe begin /k:DOTNET-PROJECT  /n:DOTNET-PROJECT /v:$BUILD_NUMBER"
+	    bat  "MSBuild.exe BlogEngine/BlogEngine.sln /t:Rebuild"
+	    bat "\"${tool 'SonarQubeScanner for MSBuild'}\" SonarQube.Scanner.MSBuild.exe end"
+	   
+	   def response = httpRequest "http://localhost:9000/api/qualitygates/project_status?projectKey=DOTNET-PROJECT"
   }
-    }
  
     stage('Unit Test'){
      

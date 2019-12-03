@@ -2,7 +2,7 @@ node{
     
     
   stage('Upload Artifacts'){
-       def server = Artifactory.newServer 'Default Artifactory Server'
+       def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', credentialsId: 'Aartifactory-Account-credentials'
      
        def uploadSpec = """{
        "files": [

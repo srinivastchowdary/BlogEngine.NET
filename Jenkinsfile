@@ -15,4 +15,5 @@ node{
         ]
     }"""
     server.upload(uploadSpec)
+  }
 }

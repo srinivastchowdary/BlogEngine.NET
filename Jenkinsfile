@@ -12,8 +12,7 @@ node{
        }
       ]
     }"""
-    def buildInfo1 = server.upload spec: uploadSpec
-	server.publishBuildInfo buildInfo1 
+    server.upload spec: uploadSpec
   }
     
     

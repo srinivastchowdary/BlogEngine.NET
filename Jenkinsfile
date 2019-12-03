@@ -2,7 +2,7 @@ node{
     
     
   stage('Upload Artifacts'){
-       def server = Artifactory.newServer 'Default Artifactory Server'
+       def server = Artifactory.newServer ('Default Artifactory Server')
      
        def uploadSpec = """{
        "files": [

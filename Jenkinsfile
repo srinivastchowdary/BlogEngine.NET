@@ -1,19 +1,16 @@
 node{
     
-stage ('Deploy Artifacts') {
-
-    //Artifactory server instance declaration   
-    def server = Artifactory.server 'Default Artifactory Server' // Default Artifactory Server is the Server ID given to Artifactory server in Jenkins
-
-    //Capturing the Build artifacts from Build server to upload
-    def uploadSpec = """{
-        "files": [
-            {
-                "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
-                "target": "DOTNET-PROJECT/BlogEngine.NET.zip"
-            }
-        ]
+ stage('Upload Artifacts'){
+       def server = Artifactory.server 'Default Artifactory Server'
+     
+       def uploadSpec = """{
+       "files": [
+       {
+          "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
+          "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
+       }
+      ]
     }"""
-    server.upload(uploadSpec)    
+    server.upload spec: uploadSpec
   }
 }

@@ -15,4 +15,5 @@ stage ('Deploy Artifacts') {
         ]
     }"""
     server.upload(uploadSpec)    
+  }
 }

@@ -10,7 +10,7 @@ stage ('Deploy Artifacts') {
         "files": [
             {
                 "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
-                "target": "DOTNET-PROJECT/BlogEngine.NET.zip"
+                "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
             }
         ]
     }"""

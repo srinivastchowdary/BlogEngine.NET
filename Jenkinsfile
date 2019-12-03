@@ -3,9 +3,7 @@ node{
     
   stage('Upload Artifacts'){
        def server = Artifactory.newServer 'Default Artifactory Server'
-       server.setBypassProxy(true)
-      
-	  
+     
        def uploadSpec = """{
        "files": [
        {

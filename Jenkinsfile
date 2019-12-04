@@ -14,24 +14,18 @@ node{
      }
  stage ('Deploy Artifacts') {
 
-    //Artifactory server instance declaration   
-   archiveArtifacts artifacts: 'BlogEngine/BlogEngine.NET/obj/Release/Package/*.*', fingerprint: true
-   def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username:'admin', password:'password'
-   server.setBypassProxy(true)
-     
+   def server = Artifactory.Server 'Default Artifactory Server'
+   
    def uploadSpec = """{
 "files": [
     {
-   "pattern": "*/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
+   "pattern": ".Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
    "target": "DOTNET-PROJECT/",
-   "regexp": "false",
+   "regexp": "true",
    "recursive": "false"
    }
   ]
 }"""
-    def buildInfo1 = server.upload spec: uploadSpec
-	server.publishBuildInfo buildInfo1 
- //server.upload spec: uploadSpec
- //server.upload(uploadSpec)
+ server.upload(uploadSpec)
 }
 }

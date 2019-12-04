@@ -9,14 +9,14 @@ node{
    def uploadSpec = """{
 "files": [
     {
-   "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
+   "pattern": "*/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
    "target": "DOTNET-PROJECT/",
-   "flat": "true",
-   "recursive":"true"
+   "regexp": "false",
+   "recursive": "false"
    }
   ]
 }"""
  //server.upload spec: uploadSpec
- def buildInfo1 = server.upload spec: uploadSpec
+ server.upload(uploadSpec)
 }
 }

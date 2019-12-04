@@ -9,7 +9,7 @@ node{
 "files": [
     {
       "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-      "target": "generic-local",
+      "target": "DOTNET-PROJECT/",
       "props": "p1=v1;p2=v2"
     },
     {
@@ -18,6 +18,6 @@ node{
     }
   ]
 }"""
- server.upload spec: uploadSpec, failNoOp: true
+ server.upload spec: uploadSpec
 }
 }

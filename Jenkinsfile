@@ -8,8 +8,8 @@ node{
    "files": [
     {
       "pattern": "(.*).zip",
-      "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
-      "recursive": "false"
+      "target": "DOTNET-PROJECT/${BUILD_NUMBER}/",
+      "recursive": "false",
       "regexp": "true"
     }
   ]

@@ -8,8 +8,8 @@ node{
    def uploadSpec = """{
 "files": [
     {
-   "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/(*.zip)",
-   "target": "repo/target_path/to/DOTNET-PROJECT/{1}",
+   "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
+   "target": "DOTNET-PROJECT/",
    "flat": "true",
    "recursive":"true"
    }

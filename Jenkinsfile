@@ -5,16 +5,24 @@ node{
     //Artifactory server instance declaration   
     def server = Artifactory.server 'Default Artifactory Server' // Default Artifactory Server is the Server ID given to Artifactory server in Jenkins
 
-    //Capturing the Build artifacts from Build server to upload
-    def uploadSpec = """{
-        "files": [
-            {
-                "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-                "target": "DOTNET-PROJECT/*.zip",
-                "props": "type=zip;status=ready"
-            }
-        ]
-    }"""
-    server.upload spec: uploadSpec
-  }
+   def uploadSpec = """{
+"files": [
+    {
+      "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
+      "target": "generic-local",
+      "props": "p1=v1;p2=v2"
+    },
+    {
+      "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
+      "target": "DOTNET-PROJECT/"
+    }
+  ]
+}"""
+    
+    // Upload to Artifactory.
+    def buildInfo = server.upload spec: uploadSpec
+
+    // Publish the build to Artifactory
+    server.publishBuildInfo buildInfo
+}
 }

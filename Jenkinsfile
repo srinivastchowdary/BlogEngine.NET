@@ -10,10 +10,11 @@ node{
         "files": [
             {
                 "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
-                "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
+                "target": "DOTNET-PROJECT/",
+                "regexp": "true"
             }
         ]
     }"""
-    server.upload(uploadSpec)
+    server.upload spec: uploadSpec, buildInfo: buildInfo
   }
 }

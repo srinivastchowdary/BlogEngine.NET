@@ -3,6 +3,7 @@ node{
  stage ('Deploy Artifacts') {
 
     //Artifactory server instance declaration   
+   archiveArtifacts artifacts: 'BlogEngine/BlogEngine.NET/obj/Release/Package/*.*', fingerprint: true
    def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username:'admin', password:'password'
    server.setBypassProxy(true)
      

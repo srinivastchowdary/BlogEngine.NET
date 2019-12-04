@@ -3,8 +3,9 @@ node{
  stage ('Deploy Artifacts') {
 
     //Artifactory server instance declaration   
-    def server = Artifactory.server 'Default Artifactory Server' // Default Artifactory Server is the Server ID given to Artifactory server in Jenkins
-
+   def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username:'admin', password:'password'
+   server.setBypassProxy(true)
+     
    def uploadSpec = """{
 "files": [
     {

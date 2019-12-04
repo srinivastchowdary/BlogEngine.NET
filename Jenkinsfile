@@ -1,20 +1,4 @@
 node{
      
- stage ('Deploy Artifacts') {
-
-   def server = Artifactory.server 'Default Artifactory Server'
-      
-   def uploadSpec = """{
-   "files": [
-    {
-      "pattern": "BlogEngine.NET.zip",
-      "target": "DOTNET-PROJECT/${BUILD_NUMBER}/",
-       "props": "type=zip;status=ready",
-      "recursive": "false",
-      "regexp": "true"
-    }
-  ]
- }"""
- server.upload(uploadSpec)
-}
+bat "curl -uadmin:password -T C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip"
 }

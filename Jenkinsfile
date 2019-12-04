@@ -11,7 +11,8 @@ node{
             {
                 "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
                 "target": "DOTNET-PROJECT/",
-                "regexp": "true"
+                "regexp": "false",
+                "recursive": "false"
             }
         ]
     }"""

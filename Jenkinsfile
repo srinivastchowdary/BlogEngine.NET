@@ -18,11 +18,6 @@ node{
     }
   ]
 }"""
-    
-    // Upload to Artifactory.
-    def buildInfo = server.upload spec: uploadSpec
-
-    // Publish the build to Artifactory
-    server.publishBuildInfo buildInfo
+ server.upload spec: uploadSpec, failNoOp: true
 }
 }

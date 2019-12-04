@@ -15,17 +15,16 @@ node{
  stage ('Deploy Artifacts') {
 
    def server = Artifactory.Server 'Default Artifactory Server'
-   
    def uploadSpec = """{
-"files": [
+   "files": [
     {
-   "pattern": ".Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-   "target": "DOTNET-PROJECT/",
-   "regexp": "true",
-   "recursive": "false"
-   }
+      "pattern": "(.*).zip",
+      "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
+      "recursive": "false"
+      "regexp": "true"
+    }
   ]
-}"""
+ }"""
  server.upload(uploadSpec)
 }
 }

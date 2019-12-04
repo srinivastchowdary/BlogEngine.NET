@@ -15,6 +15,6 @@ node{
             }
         ]
     }"""
-    server.upload spec: uploadSpec, buildInfo: buildInfo
+    server.upload spec: uploadSpec
   }
 }

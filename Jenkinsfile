@@ -10,12 +10,13 @@ node{
 "files": [
     {
    "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
-   "target": "DOTNET-PROJECT",
+   "target": "DOTNET-PROJECT/",
    "flat": "true",
    "recursive":"true"
    }
   ]
 }"""
- server.upload spec: uploadSpec
+ //server.upload spec: uploadSpec
+ def buildInfo1 = server.upload spec: uploadSpec
 }
 }

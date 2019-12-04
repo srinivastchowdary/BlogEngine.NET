@@ -10,7 +10,7 @@ node{
 "files": [
     {
    "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
-   "target": "DOTNET-PROJECT/",
+   "target": "DOTNET-PROJECT",
    "flat": "true",
    "recursive":"true"
    }

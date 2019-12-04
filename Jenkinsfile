@@ -8,14 +8,11 @@ node{
    def uploadSpec = """{
 "files": [
     {
-      "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*BlogEngine.NET*.zip",
-      "target": "DOTNET-PROJECT/",
-      "props": "p1=v1;p2=v2"
-    },
-    {
-      "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-      "target": "DOTNET-PROJECT/"
-    }
+   "pattern": "${WORKSPACE}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/(*.zip)",
+   "target": "repo/target_path/to/DOTNET-PROJECT/{1}",
+   "flat": "true",
+   "recursive":"true"
+   }
   ]
 }"""
  server.upload spec: uploadSpec

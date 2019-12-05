@@ -1,14 +1,5 @@
 node{
      stage('Upload Artifacts'){
-       def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
-       def uploadSpec = """{
-       "files": [
-       {
-          "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-          "target": "DOTNET-PROJECT/BlogEngine.NET.zip"
-       }
-      ]
-    }"""
-    server.upload spec: uploadSpec
+      bat 'curl -uadmin:password -X PUT "http://192.168.0.203:8081/artifactory/api/storage/Esafe-Project/${BUILD_NUMBER}/BlogEngine.NET.zip'
   }
 }

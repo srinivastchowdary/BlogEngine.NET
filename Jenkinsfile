@@ -1,7 +1,14 @@
 node{
      stage('Upload Artifacts'){
-      bat 'curl -i -uadmin:password -X PUT ${workspace}/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip "http://localhost:8081/artifactory/DOTNET-PROJECT/$BUILD_NUMBER/BlogEngine.NET.zip"'
-
-
+       def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
+       def uploadSpec = """{
+       "files": [
+       {
+          "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*.zip",
+          "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
+       }
+      ]
+    }"""
+    server.upload spec: uploadSpec
   }
 }

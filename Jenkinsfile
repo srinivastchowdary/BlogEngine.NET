@@ -2,7 +2,8 @@ node{
   
 stage ('Publish'){
          archiveArtifacts artifacts: '**/*.zip', fingerprint: true
-    	 def server = Artifactory.server 'Artifactory Server'
+	 def server = Artifactory.newServer url:'http://192.168.0.203:8081/artifactory', username:'admin', password:'artifact123'
+    	 //def server = Artifactory.server 'Artifactory Server'
          server.setBypassProxy(true)
 
     		def uploadSpec = """{
@@ -13,7 +14,8 @@ stage ('Publish'){
    		}
         	]
 		}"""
-		server.upload(uploadSpec)
+		def buildInfo1 = server.upload spec: uploadSpec
+	        server.publishBuildInfo buildInfo1 
 	}
 
 }

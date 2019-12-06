@@ -6,7 +6,7 @@ node{
                  "files": [
                   {
                    "pattern": "(.*).zip",
-                   "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip",
+                   "target": "DOTNET-PROJECT/.$BUILD_NUMBER.zip",
                    "recursive": "false",
                    "regexp": "true"
                   }

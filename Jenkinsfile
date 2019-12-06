@@ -1,6 +1,18 @@
 node{
- stage ('Publish'){
-             bat label: '', script: '''curl -X PUT -u admin:artifact123 -T **/*.zip "http://192.168.0.203:8081/artifactory/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
-'''
-   }
+ 
+stage ('Publish'){
+      archiveArtifacts '**/*.zip'
+      def server = Artifactory.server 'Artifactory Server'
+      server.setBypassProxy(true)
+
+    		def uploadSpec = """{
+    		"files": [
+    		{
+     		"pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/*BlogEngine*.zip",
+     		"target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
+   		}
+           	]
+		}"""
+		server.upload(uploadSpec)
+	}
 }

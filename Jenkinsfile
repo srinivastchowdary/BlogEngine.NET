@@ -13,6 +13,6 @@ node{
         
      }
   stage('Upload Artifacts'){
-      bat 'curl -i -uadmin:password -X PUT "http://localhost:8081/artifactory/api/storage/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"'
+      bat 'curl -i -uadmin:password -X PUT "http://192.168.0.203:8081/artifactory/api/storage/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"'
      }
 }

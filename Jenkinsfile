@@ -1,8 +1,8 @@
 node{
   
 stage ('Publish'){
-         archiveArtifacts '**/*.zip'
-    		def server = Artifactory.server 'Artifactory Server'
+         archiveArtifacts artifacts: '**/*.zip'
+    	 def server = Artifactory.server 'Artifactory Server'
          server.setBypassProxy(true)
 
     		def uploadSpec = """{

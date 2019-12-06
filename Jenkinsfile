@@ -1,17 +1,6 @@
 node{
  stage ('Publish'){
-                archiveArtifacts '**/*.zip'
-    		        def server = Artifactory.server 'Artifactory Server'
-                def uploadSpec = """{
-                 "files": [
-                  {
-                   "pattern": "**/*.zip",
-                   "target": "DOTNET-PROJECT/.$BUILD_NUMBER/*.zip",
-                   "recursive": "false",
-                   "regexp": "true"
-                  }
-                  ]
-               }"""
-            server.upload(uploadSpec)
+             bat label: '', script: '''curl -X PUT -u admin:artifact123 -T BlogEngine.NET.zip "http://192.168.0.203:8081/artifactory/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
+'''
    }
 }

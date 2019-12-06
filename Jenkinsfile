@@ -5,8 +5,8 @@ node{
                 def uploadSpec = """{
                  "files": [
                   {
-                   "pattern": "**/.zip",
-                   "target": "DOTNET-PROJECT/.$BUILD_NUMBER/.zip",
+                   "pattern": "**/*.zip",
+                   "target": "DOTNET-PROJECT/.$BUILD_NUMBER/*.zip",
                    "recursive": "false",
                    "regexp": "true"
                   }

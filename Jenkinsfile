@@ -1,3 +1,17 @@
 node{
-  bat label: '', script: 'curl -uadmin:artifact123 -X PUT C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip "http://sonarartifact.esafe.com:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip"'
+ stage ('Publish'){
+                archiveArtifacts '**/*.zip'
+    		        def server = Artifactory.server 'Artifactory Server'
+                def uploadSpec = """{
+                 "files": [
+                  {
+                   "pattern": "(.*).zip",
+                   "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
+                   "recursive": "false"
+                   "regexp": "true"
+                  }
+                  ]
+               }"""
+            server.upload(uploadSpec)
+   }
 }

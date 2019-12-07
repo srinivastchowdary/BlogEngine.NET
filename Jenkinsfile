@@ -37,20 +37,10 @@ node{
 '''
   }
 	
+ stage('Download Artifacts'){
 	
- stage('Deploy to ansiblesaerver'){
-             def server = Artifactory.server 'Default Artifactory Server'
-             def downloadSpec = """{
-             "files": [
-              {
-              "pattern": "DOTNET-PROJECT/*.zip",
-              "target": "G:/tmp",
-              "flat": "true"
-               }
-               ]
-               }"""
-               server.download(downloadSpec)
-               }
+	 bat label: '', script: 'curl -H \'X-JFrog-Art-Api:AP9f8B2sPwKyBspLxTzC9TeN9Q\' -O "http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip/H:\\seenu.net"'
+	}
     
  //   stage('Deploy to IIS'){
     

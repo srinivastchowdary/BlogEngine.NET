@@ -44,7 +44,7 @@ node{
              "files": [
               {
               "pattern": "DOTNET-PROJECT/*.zip",
-              "target": "H:/seenu.net",
+              "target": "G:/tmp",
               "flat": "true"
                }
                ]

@@ -33,7 +33,7 @@ node{
       archiveArtifacts '**/*.zip'
     }
   stage('Upload Artifacts'){
-      bat label: '', script: '''curl -uadmin:password -T "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip" "http://localhost:8081/artifactory/api/storage/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
+      bat label: '', script: '''curl -uadmin:password -T "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip" "http://localhost:8081/artifactory/api/DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
 '''
   }
     

@@ -39,7 +39,7 @@ node{
 	
  stage('Download Artifacts'){
 	
-	 bat label: '', script: 'curl -H \'X-JFrog-Art-Api:AP9f8B2sPwKyBspLxTzC9TeN9Q\' -O "http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip/H:/seenu.net"'
+	 bat label: '', script: 'curl -H \'X-JFrog-Art-Api:AP9f8B2sPwKyBspLxTzC9TeN9Q\' -O "http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip" "H:\\seenu.net"'
 	}
     
  //   stage('Deploy to IIS'){

@@ -36,6 +36,21 @@ node{
       bat label: '', script: '''curl -uadmin:password -T "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip" "http://localhost:8081/artifactory/DOTNET-PROJECT/${buildName}/${buildNumber}/BlogEngine.NET.zip?"
 '''
   }
+	
+	
+ stage('Deploy to ansiblesaerver'){
+             def server = Artifactory.server 'Default Artifactory Server'
+             def downloadSpec = """{
+             "files": [
+              {
+              "pattern": "DOTNET-PROJECT/*.zip",
+              "target": "H:/seenu.net",
+              "flat": "true"
+               }
+               ]
+               }"""
+               server.download(downloadSpec)
+               }
     
  //   stage('Deploy to IIS'){
     

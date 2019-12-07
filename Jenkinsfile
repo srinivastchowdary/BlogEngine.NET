@@ -33,16 +33,8 @@ node{
       archiveArtifacts '**/*.zip'
     }
   stage('Upload Artifacts'){
-       def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
-       def uploadSpec = """{
-       "files": [
-       {
-         "pattern": "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip",
-         "target": "DOTNET-PROJECT/${BUILD_NUMBER}/BlogEngine.NET.zip"
-       }
-      ]
-     }"""
-    server.upload spec: uploadSpec
+      bat label: '', script: '''curl -uadmin:artifact123 -T "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip" "http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip"
+'''
   }
     
  //   stage('Deploy to IIS'){

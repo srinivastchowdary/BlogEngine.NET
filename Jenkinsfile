@@ -47,7 +47,8 @@ node{
     
     stage('Deploy to IIS'){
     
-       bat "C:/Program Files/IIS/Microsoft Web Deploy V3/msdeploy.exe -verb=sync -source:package=C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip -dest:auto -setParam:IIS Web Application Name=dotnetproject -allowUntrusted=true"
+   bat label: '', script: '''"C:\\Program Files\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb=sync -source:package="C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project\\BlogEngine\\BlogEngine.NET\\obj\\Release\\_PublishedWebsites\\BlogEngine.NET_Package\\BlogEngine.NET.zip" -dest:auto -setParam:"IIS Web Application Name"="dotnetproject" -allowUntrusted=true
+'''
     }
     
     //stage('Attachment Log'){

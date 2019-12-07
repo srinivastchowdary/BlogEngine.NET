@@ -25,7 +25,7 @@ node{
  
     stage('Unit Test'){
      
-           bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll"
+           bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:Testresults.trx"
        }
     
     stage('Download Artifacts'){

@@ -12,22 +12,10 @@ node{
  //      bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
    //  }
- stage('Upload Artifacts'){
-     archiveArtifacts artifacts: '**/*.zip'
-     def server = Artifactory.server 'Default Artifactory Server'
-    // def buildInfo = Artifactory.newBuildInfo()
-     
-     
-     def uploadSpec = """{
-     "files": [
-        {
-          "pattern": "Package/*BlogEngine.*.zip",
-          "target": "DOTNET-PROJECT/",
-          "regexp": "true",
-          "recursive": "false"
-        }
-    ]
- }"""
-  server.upload spec: uploadSpec //buildInfo: buildInfo
- }
+stage('Upload Artifacts'){
+      bat label: '', script: '''curl -uadmin:password -T "C:\\Program Files (x86)\\Jenkins\\workspace\\.Net-Project_Pipeline\\BlogEngine\\BlogEngine.NET\\obj\\Release\\Package\\BlogEngine.NET.zip" "http://localhost:8081/artifactory/DOTNET-PROJECT/BlogEngine.NET.zip --build-name=my-build-name --build-number=18
+
+"
+'''
+  }
 }

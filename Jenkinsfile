@@ -16,7 +16,7 @@ node{
      archiveArtifacts artifacts: '**/*.zip'
      def server = Artifactory.server 'Default Artifactory Server'
      def buildInfo = Artifactory.newBuildInfo()
-     buildInfo.env.capture = true
+     
      
      def uploadSpec = """{
      "files": [

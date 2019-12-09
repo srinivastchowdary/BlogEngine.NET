@@ -21,9 +21,10 @@ node{
      def uploadSpec = """{
      "files": [
         {
-          "pattern": "**\*BlogEngine.*.zip",
-          "target": "DOTNET-PROJECT/BlogEngine.NET.zip",
-          "regexp": "true"
+          "pattern": "**/*BlogEngine.*.zip",
+          "target": "DOTNET-PROJECT/",
+          "regexp": "true",
+          "recursive": "false"
         }
     ]
  }"""

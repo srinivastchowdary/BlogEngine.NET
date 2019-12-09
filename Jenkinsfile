@@ -23,6 +23,8 @@ node{
         {
           "pattern": "**/*BlogEngine.*.zip",
           "target": "DOTNET-PROJECT/",
+          "buildName"      : "buildInfo.name",
+          "buildNumber"    : "buildInfo.number",
           "regexp": "true",
           "recursive": "false"
         }

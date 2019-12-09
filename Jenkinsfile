@@ -17,9 +17,7 @@ node{
      def server = Artifactory.server 'Default Artifactory Server'
      def buildInfo = Artifactory.newBuildInfo()
      buildInfo.env.capture = true
-     buildInfo.env.collect()
-     server.bypassProxy = true
-   
+     
      def uploadSpec = """{
      "files": [
         {

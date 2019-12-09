@@ -22,12 +22,12 @@ node{
      "files": [
         {
           "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/.*B[A-z]logEngine.*.zip",
-          "target": "DOTNET-PROJECT/",
+          "target": "DOTNET-PROJECT/BlogEngine.NET.zip",
           "regexp": "true"
         },
         {
           "pattern": "C:/Program Files (x86)/Jenkins/workspace/.Net-Project_Pipeline/BlogEngine/BlogEngine.NET/obj/Release/Package/.*(B|b)logEngine.*.zip",
-          "target": "DOTNET-PROJECT/",
+          "target": "DOTNET-PROJECT/BlogEngine.NET.zip",
          "regexp": "true"
         }
     ]

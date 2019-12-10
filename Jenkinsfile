@@ -24,6 +24,6 @@ stage('Upload Artifacts'){
       }
      ]
     }"""
-   server.upload(uploadSpec), failNoOp: true
+    server.upload spec: uploadSpec, failNoOp: true
   }
 }

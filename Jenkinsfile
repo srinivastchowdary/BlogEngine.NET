@@ -15,10 +15,8 @@ node{
 stage('Upload Artifacts'){
      archiveArtifacts artifacts: '**/*.zip'
      def server = Artifactory.server 'Default Artifactory Server'
-     //def buildInfo = Artifactory.newBuildInfo()
- 
-      def buildInfo = server.upload(uploadSpec)
-      buildInfo.env.capture = true
+     def buildInfo = Artifactory.newBuildInfo()
+     buildInfo.env.capture = true
      
      
 
@@ -30,10 +28,6 @@ stage('Upload Artifacts'){
       }
      ]
     }"""
-   //server.upload(uploadSpec)
-   server.publishBuildInfo(buildInfo)
-   //server.upload(artifactoryUploadDsl, buildInfo)
-  // server.publishBuildInfo(buildInfo)
-  
+   server.upload(uploadSpec) 
   }
 }

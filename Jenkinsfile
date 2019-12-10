@@ -13,21 +13,21 @@ node{
         
    //  }
 stage('Upload Artifacts'){
-     archiveArtifacts artifacts: '**/*.zip'
+     archiveArtifacts artifacts: '**/package/*.zip'
      def server = Artifactory.server 'Default Artifactory Server'
-    // def buildInfo = Artifactory.newBuildInfo()
+     def buildInfo = Artifactory.newBuildInfo()
+     buildInfo.env.capture = true
      
-     
-     def uploadSpec = """{
+
+    def uploadSpec = """{
      "files": [
-        {
-          "pattern": "Package/*BlogEngine.*.zip",
-          "target": "DOTNET-PROJECT/",
-          "regexp": "false",
-          "recursive": "false"
-        }
-    ]
- }"""
-  server.upload spec: uploadSpec //buildInfo: buildInfo
- }
+      {
+       "pattern": "Package/*BlogEngine*.zip",
+       "target": "DOTNET-PROJECT/"
+      }
+     ]
+    }"""
+   server.upload(uploadSpec)
+   server.upload(artifactoryUploadDsl, buildInfo)
+
 }

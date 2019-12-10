@@ -12,32 +12,8 @@ node{
  //      bat "\"${tool 'MSBuild'}\" BlogEngine/BlogEngine.sln /t:rebuild /p:VisualStudio=17.0 /p:Configuration=Release /p:DeployOnBuild=True"
         
    //  }
-stage('Upload Artifacts'){
-     archiveArtifacts artifacts: '**/*.zip'
-     def server = Artifactory.server 'Default Artifactory Server'
+stage('Unit Test'){
      
- def uploadSpec = """{
-     "files": [
-      {
-       "pattern": "BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-       "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
-      }
-     ]
-    }"""
-    server.upload spec: uploadSpec, failNoOp: true
-  }
- 
-  stage('Deploy to ansiblesaerver'){
-             def server = Artifactory.server 'Default Artifactory Server'
-             def downloadSpec = """{
-             "files": [
-              {
-              "pattern": "DOTNET-PROJECT/$BUILD_NUMBER/*.zip",
-              "target": "H:/seenu.net/",
-              "flat": "true"
-               }
-               ]
-               }"""
-               server.download spec: downloadSpec, failNoOp: true
-               }
+      bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:Testresults.trx"
+    }
 }

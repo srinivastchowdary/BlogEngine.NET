@@ -15,19 +15,15 @@ node{
 stage('Upload Artifacts'){
      archiveArtifacts artifacts: '**/*.zip'
      def server = Artifactory.server 'Default Artifactory Server'
-     def buildInfo = Artifactory.newBuildInfo()
-     buildInfo.env.capture = true
      
-     
-
-    def uploadSpec = """{
+ def uploadSpec = """{
      "files": [
       {
-       "pattern": "Package/*BlogEngine*.zip",
+       "pattern": "Package/*BlogEngine.*.zip",
        "target": "DOTNET-PROJECT/"
       }
      ]
     }"""
-   server.upload(uploadSpec) 
+   server.upload(uploadSpec), failNoOp: true
   }
 }

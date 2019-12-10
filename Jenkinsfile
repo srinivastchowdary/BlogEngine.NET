@@ -19,7 +19,7 @@ stage('Upload Artifacts'){
  def uploadSpec = """{
      "files": [
       {
-       "pattern": "$WORKSPACE/*BlogEngine.*.zip",
+       "pattern": "${WORKSPACE}/*BlogEngine.*.zip",
        "target": "DOTNET-PROJECT/"
       }
      ]

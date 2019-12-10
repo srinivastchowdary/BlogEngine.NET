@@ -17,6 +17,7 @@ stage('Upload Artifacts'){
      def server = Artifactory.server 'Default Artifactory Server'
      def buildInfo = Artifactory.newBuildInfo()
       buildInfo.env.capture = true
+      def buildInfo = server.upload(uploadSpec)
      
 
     def uploadSpec = """{
@@ -28,6 +29,7 @@ stage('Upload Artifacts'){
      ]
     }"""
    server.upload(uploadSpec)
+   server.publishBuildInfo(buildInfo)
    //server.upload(artifactoryUploadDsl, buildInfo)
   // server.publishBuildInfo(buildInfo)
   

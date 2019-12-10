@@ -55,9 +55,9 @@ node{
           }
    stage('Deploy to IIS'){
     
-       bat label: '', script: '''"H:\\seenu.net\\BlogEngine.NET.zip" -dest:auto -setParam:"IIS Web Application Name"="Blogengine" -allowUntrusted=true
-       '''
-    }
+        bat label: '', script: '''"C:\\Program Files\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb=sync -source:package="H:\\seenu.net\\BlogEngine.NET.zip" -dest:auto -setParam:"IIS Web Application Name"="Blogengine" -allowUntrusted=true
+    '''
+   }
    stage('Attachment Log'){
               emailext attachLog: true, body: '${currentBuild.result}: ${BUILD_URL}', 
               compressLog: true, replyTo: 'mohamed.sadiqh@gmail.com', 

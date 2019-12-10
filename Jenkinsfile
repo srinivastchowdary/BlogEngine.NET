@@ -16,7 +16,7 @@ stage('Upload Artifacts'){
      archiveArtifacts artifacts: '**/*.zip'
      def server = Artifactory.server 'Default Artifactory Server'
      def buildInfo = Artifactory.newBuildInfo()
-     buildInfo.env.capture = true
+     
      
 
     def uploadSpec = """{
@@ -29,5 +29,6 @@ stage('Upload Artifacts'){
     }"""
    server.upload(uploadSpec)
    server.upload(artifactoryUploadDsl, buildInfo)
+   buildInfo.env.capture = true
   }
 }

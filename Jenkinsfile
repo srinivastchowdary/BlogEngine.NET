@@ -13,7 +13,7 @@ node{
         
    //  }
 stage('Unit Test'){
-     
-      bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /del:Testresults.trx /resultsfile:Testresults.trx"
+      bat "del Testresults.trx"
+      bat "\"${tool 'MSTest'}\" /testcontainer:BlogEngine/BlogEngine.Tests/bin/Debug/BlogEngine.Tests.dll /resultsfile:Testresults.trx"
     }
 }

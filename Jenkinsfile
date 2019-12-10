@@ -29,5 +29,5 @@ stage('Upload Artifacts'){
     }"""
    server.upload(uploadSpec)
    server.upload(artifactoryUploadDsl, buildInfo)
-
+  }
 }

@@ -40,7 +40,7 @@ node{
             server.upload spec: uploadSpec, failNoOp: true
        }
  
-  stage('Deploy to ansiblesaerver'){
+  stage('Download Artifacts To Local Machine'){
              def server = Artifactory.server 'Default Artifactory Server'
              def downloadSpec = """{
              "files": [

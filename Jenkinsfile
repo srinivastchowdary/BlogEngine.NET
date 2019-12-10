@@ -28,7 +28,7 @@ stage('Upload Artifacts'){
      ]
     }"""
    //server.upload(uploadSpec)
-   server.upload(artifactoryUploadDsl, buildInfo)
+   //server.upload(artifactoryUploadDsl, buildInfo)
    server.publishBuildInfo(buildInfo)
    buildInfo.env.capture = true
   }

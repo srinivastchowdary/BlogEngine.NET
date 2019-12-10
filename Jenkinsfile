@@ -33,7 +33,7 @@ stage('Upload Artifacts'){
              "files": [
               {
               "pattern": "DOTNET-PROJECT/$BUILD_NUMBER/*.zip",
-              "target": "H:\\seenu.net",
+              "target": "H:/seenu.net/",
               "flat": "true"
                }
                ]

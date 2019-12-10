@@ -20,7 +20,7 @@ stage('Upload Artifacts'){
      "files": [
       {
        "pattern": "BlogEngine/BlogEngine.NET/obj/Release/Package/BlogEngine.NET.zip",
-       "target": "DOTNET-PROJECT/${BUILD_NUMBER}/${BUILD_NAME}/"
+       "target": "DOTNET-PROJECT/${BUILD_NUMBER}/"
       }
      ]
     }"""

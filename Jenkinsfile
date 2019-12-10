@@ -26,4 +26,18 @@ stage('Upload Artifacts'){
     }"""
     server.upload spec: uploadSpec, failNoOp: true
   }
+ 
+  stage('Deploy to ansiblesaerver'){
+             def server = Artifactory.server 'Default Artifactory Server'
+             def downloadSpec = """{
+             "files": [
+              {
+              "pattern": "DOTNET-PROJECT/$BUILD_NUMBER/*.zip",
+              "target": "H:\\seenu.net",
+              "flat": "true"
+               }
+               ]
+               }"""
+               server.download spec: downloadSpec, failNoOp: true
+               }
 }
